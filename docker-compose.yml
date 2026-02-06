@@ -45,7 +45,7 @@ services:
       GENIEACS_MONGODB_CONNECTION_URL: mongodb://mongodb/genieacs
       GENIEACS_UI_JWT_SECRET: changeme
     ports:
-      - "3000:3000"
+      - "3001:3000"
 
   provision-deployer:
     image: curlimages/curl:latest
