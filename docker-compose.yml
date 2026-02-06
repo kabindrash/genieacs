@@ -58,3 +58,7 @@ services:
 
 volumes:
   mongodb-data:
+
+networks:
+  default:
+    name: genieacs_default

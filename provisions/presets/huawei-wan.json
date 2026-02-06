@@ -1,7 +1,7 @@
 {
   "weight": 10,
   "channel": "wan",
-  "events": {"0 BOOTSTRAP": true},
+  "events": {"2 PERIODIC": true},
   "precondition": "DeviceID.Manufacturer LIKE \"%Huawei%\"",
   "configurations": [
     {"type": "provision", "name": "huawei-wan-pppoe", "args": null}

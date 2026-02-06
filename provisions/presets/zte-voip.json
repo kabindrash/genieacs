@@ -1,7 +1,7 @@
 {
   "weight": 20,
   "channel": "voip",
-  "events": {"0 BOOTSTRAP": true},
+  "events": {"2 PERIODIC": true},
   "precondition": "DeviceID.Manufacturer LIKE \"%ZTE%\"",
   "configurations": [
     {"type": "provision", "name": "zte-voip", "args": null}

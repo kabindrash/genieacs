@@ -3,3 +3,6 @@ dist/
 claudedocs/
 .serena/
 test/
+simulators/
+.playwright-mcp/
+screenshots/

@@ -1,7 +1,7 @@
 {
   "weight": 10,
   "channel": "wan",
-  "events": {"0 BOOTSTRAP": true},
+  "events": {"2 PERIODIC": true},
   "precondition": "Tags.nokia = true AND Tags.tr181 = true",
   "configurations": [
     {"type": "provision", "name": "nokia-wan-pppoe", "args": null}

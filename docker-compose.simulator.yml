@@ -1,0 +1,56 @@
+services:
+  sim-huawei:
+    build: ./simulators
+    volumes:
+      - ./simulators/data-models:/data-models:ro
+    command:
+      [
+        "-u",
+        "http://genieacs-cwmp:7547/",
+        "-m",
+        "/data-models/huawei-hg8245h.csv",
+        "-p",
+        "3",
+        "-s",
+        "1000",
+      ]
+    networks: [genieacs-net]
+
+  sim-zte:
+    build: ./simulators
+    volumes:
+      - ./simulators/data-models:/data-models:ro
+    command:
+      [
+        "-u",
+        "http://genieacs-cwmp:7547/",
+        "-m",
+        "/data-models/zte-f660.csv",
+        "-p",
+        "3",
+        "-s",
+        "2000",
+      ]
+    networks: [genieacs-net]
+
+  sim-nokia:
+    build: ./simulators
+    volumes:
+      - ./simulators/data-models:/data-models:ro
+    command:
+      [
+        "-u",
+        "http://genieacs-cwmp:7547/",
+        "-m",
+        "/data-models/nokia-g240wa.csv",
+        "-p",
+        "3",
+        "-s",
+        "3000",
+      ]
+    networks: [genieacs-net]
+
+networks:
+  genieacs-net:
+    external: true
+    name: genieacs_default
