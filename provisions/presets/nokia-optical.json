@@ -1,0 +1,9 @@
+{
+  "weight": 0,
+  "channel": "monitoring",
+  "events": {"2 PERIODIC": true},
+  "precondition": "DeviceID.Manufacturer LIKE \"%ALCL%\"",
+  "configurations": [
+    {"type": "provision", "name": "nokia-optical-monitor", "args": null}
+  ]
+}

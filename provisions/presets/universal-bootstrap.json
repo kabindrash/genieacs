@@ -1,0 +1,9 @@
+{
+  "weight": 0,
+  "channel": "bootstrap",
+  "events": {"0 BOOTSTRAP": true},
+  "precondition": "",
+  "configurations": [
+    {"type": "provision", "name": "universal-auto-tag", "args": null}
+  ]
+}

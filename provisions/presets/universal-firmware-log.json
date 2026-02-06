@@ -1,0 +1,9 @@
+{
+  "weight": 0,
+  "channel": "monitoring",
+  "events": {"2 PERIODIC": true},
+  "precondition": "",
+  "configurations": [
+    {"type": "provision", "name": "universal-firmware-log", "args": null}
+  ]
+}

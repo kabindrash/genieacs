@@ -1,0 +1,9 @@
+{
+  "weight": 20,
+  "channel": "voip",
+  "events": {"0 BOOTSTRAP": true},
+  "precondition": "DeviceID.Manufacturer LIKE \"%Huawei%\"",
+  "configurations": [
+    {"type": "provision", "name": "huawei-voip", "args": null}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "weight": 10,
+  "channel": "wifi",
+  "events": {"0 BOOTSTRAP": true},
+  "precondition": "Tags.nokia = true AND Tags.tr098 = true",
+  "configurations": [
+    {"type": "provision", "name": "nokia-wifi-config", "args": null}
+  ]
+}

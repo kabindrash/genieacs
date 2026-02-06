@@ -1,0 +1,10 @@
+{
+  "weight": 0,
+  "channel": "bootstrap",
+  "events": {"0 BOOTSTRAP": true},
+  "precondition": "DeviceID.Manufacturer LIKE \"%ALCL%\"",
+  "configurations": [
+    {"type": "provision", "name": "nokia-detect-model", "args": null},
+    {"type": "provision", "name": "nokia-auto-tag", "args": null}
+  ]
+}

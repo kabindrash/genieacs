@@ -1,0 +1,9 @@
+{
+  "weight": 10,
+  "channel": "wifi",
+  "events": {"0 BOOTSTRAP": true},
+  "precondition": "DeviceID.Manufacturer LIKE \"%ZTE%\"",
+  "configurations": [
+    {"type": "provision", "name": "zte-wifi-config", "args": null}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "weight": 20,
+  "channel": "voip",
+  "events": {"0 BOOTSTRAP": true},
+  "precondition": "DeviceID.Manufacturer LIKE \"%ZTE%\"",
+  "configurations": [
+    {"type": "provision", "name": "zte-voip", "args": null}
+  ]
+}
