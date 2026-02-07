@@ -68,7 +68,7 @@ GenieACS is a TR-069/CWMP Auto Configuration Server composed of four microservic
 | **UI** | 3000 (mapped to 3001 in Docker) | Web admin interface |
 
 **Screenshot: Overview Dashboard**
-> ![Overview Dashboard](../screenshots/01-overview-dashboard.png)
+> ![Overview Dashboard](images/01-overview-dashboard.png)
 >
 > *The GenieACS overview page showing 9 registered devices across 3 vendors — Huawei HG8245H (3), ZTE ZXHN F660 (3), Nokia G-240W-A (3). All devices are online with zero faults.*
 
@@ -114,7 +114,7 @@ Device Power On
 ```
 
 **Screenshot: Devices List**
-> ![Devices List](../screenshots/02-devices-list.png)
+> ![Devices List](images/02-devices-list.png)
 >
 > *All 9 registered devices showing serial numbers, product classes, firmware versions, SSIDs (all set to "MyNetwork"), and auto-applied tags (huawei/zte/nokia, vendor_*, model-specific).*
 
@@ -138,7 +138,7 @@ declare(path, timestamps, values);
 - **values**: What to set (`{value: "MySSID"}` = write this value)
 
 **Screenshot: Admin > Provisions**
-> ![Provisions List](../screenshots/07-admin-provisions.png)
+> ![Provisions List](images/07-admin-provisions.png)
 >
 > *The Admin > Provisions page showing all 26 deployed provision scripts organized by vendor: universal (4), huawei (7), zte (7), nokia (8).*
 
@@ -157,7 +157,7 @@ Presets define WHEN a provision runs. They contain:
 **CRITICAL**: Event matching uses AND logic, not OR. If you specify `{"0 BOOTSTRAP": true, "2 PERIODIC": true}`, the device must report BOTH events in the same Inform message. Most devices only send one event type per session.
 
 **Screenshot: Admin > Presets**
-> ![Presets List](../screenshots/08-admin-presets.png)
+> ![Presets List](images/08-admin-presets.png)
 >
 > *The Admin > Presets page showing all 16 deployed presets with their channels, events, and preconditions.*
 
@@ -175,7 +175,7 @@ VirtualParameters.wifi_ssid_2g
 ```
 
 **Screenshot: Admin > Virtual Parameters**
-> ![Virtual Parameters](../screenshots/09-admin-virtual-params.png)
+> ![Virtual Parameters](images/09-admin-virtual-params.png)
 >
 > *The Admin > Virtual Parameters page showing the 5 deployed virtual parameters: wifi_ssid_2g, wifi_password_2g, wan_status, wan_ip, optical_rx_power.*
 
@@ -308,7 +308,7 @@ declare("VirtualParameters.wifi_password_2g", {value: now}, {value: PASSWORD_24}
 This approach is elegant but currently only works for 2.4 GHz. See [Section 4.4](#44-unified-ssid--making-bands-work-together) for extending this to 5 GHz.
 
 **Screenshot: Huawei Device Detail**
-> ![Huawei Device Detail](../screenshots/03-huawei-device-detail.png)
+> ![Huawei Device Detail](images/03-huawei-device-detail.png)
 >
 > *A Huawei HG8245H device detail page showing all parameters including WiFi configuration (WLANConfiguration.1 for 2.4GHz, WLANConfiguration.5 for 5GHz), WAN settings, and applied tags.*
 
@@ -357,12 +357,12 @@ declare("Device.WiFi.AccessPoint.2.Security.KeyPassphrase", {value: now}, {value
 ```
 
 **Screenshot: ZTE Device Detail**
-> ![ZTE Device Detail](../screenshots/04-zte-device-detail.png)
+> ![ZTE Device Detail](images/04-zte-device-detail.png)
 >
 > *A ZTE ZXHN F660 device showing both 2.4GHz (WLANConfiguration.1) and 5GHz (WLANConfiguration.5) configured with SSIDs "MyNetwork" and "MyNetwork-5G". Note: ZTE uses `KeyPassphrase` directly, not `PreSharedKey.1.KeyPassphrase`.*
 
 **Screenshot: Nokia Device Detail**
-> ![Nokia Device Detail](../screenshots/05-nokia-device-detail.png)
+> ![Nokia Device Detail](images/05-nokia-device-detail.png)
 >
 > *A Nokia G-240W-A (TR-098) device showing WiFi, WAN, and VoIP parameters along with auto-applied tags (nokia, tr098, vendor_nokia, G_240W_A).*
 
@@ -797,7 +797,7 @@ curl -X PUT \
    - **Version**: Target version string
 
 **Screenshot: Admin > Files**
-> ![Admin Files](../screenshots/10-admin-files.png)
+> ![Admin Files](images/10-admin-files.png)
 >
 > *The Admin > Files page where firmware images and configuration files are uploaded and managed.*
 
@@ -1171,7 +1171,7 @@ curl -X DELETE http://localhost:7557/presets/old-preset-name
    - Provision timeout (> 50ms in sandbox)
 
 **Screenshot: Faults Page**
-> ![Faults Page](../screenshots/06-faults-empty.png)
+> ![Faults Page](images/06-faults-empty.png)
 >
 > *The Faults page — empty means all provisions executed successfully with no errors.*
 

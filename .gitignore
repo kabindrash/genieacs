@@ -1,6 +1,8 @@
 *~
+.DS_Store
 node_modules
 dist
 docs/_build
 .serena
+.playwright-mcp
 screenshots
