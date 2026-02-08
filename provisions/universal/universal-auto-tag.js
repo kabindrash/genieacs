@@ -16,10 +16,10 @@ var VENDOR_ALIASES = {
   "dasan": "dasan"
 };
 
-const now = Date.now();
+var now = Date.now();
 var manufacturer = declare("DeviceID.Manufacturer", {value: now});
 var productClass = declare("DeviceID.ProductClass", {value: now});
-var mfg = (manufacturer.value[0] || "").toLowerCase();
+var mfg = (manufacturer.value && manufacturer.value[0]) ? manufacturer.value[0].toLowerCase() : "";
 
 // Find matching vendor from alias map
 var vendorTag = null;
@@ -38,15 +38,18 @@ if (vendorTag) {
 }
 
 // Data model detection (ALL vendors, not just Nokia)
+// Clear opposite tag to prevent stale tags if data model ever changes
 var tr181 = declare("Device.DeviceInfo.Manufacturer", {value: now});
 if (tr181.size) {
   declare("Tags.tr181", null, {value: true});
+  declare("Tags.tr098", null, {value: false});
 } else {
   declare("Tags.tr098", null, {value: true});
+  declare("Tags.tr181", null, {value: false});
 }
 
 // Model-specific tag (all vendors)
-var model = productClass.value[0];
+var model = (productClass.value && productClass.value[0]) ? productClass.value[0] : null;
 if (model) {
   declare("Tags." + model.replace(/[^a-zA-Z0-9]/g, "_"), null, {value: true});
 }

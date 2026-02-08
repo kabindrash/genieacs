@@ -22,5 +22,10 @@ declare("Tags.migrated", null, {value: true});
 declare("Tags.needs_config", null, {value: true});
 
 // Set periodic inform to ensure ongoing management connectivity
-declare("InternetGatewayDevice.ManagementServer.PeriodicInformEnable", {value: now}, {value: true});
-declare("InternetGatewayDevice.ManagementServer.PeriodicInformInterval", {value: now}, {value: 300});
+// Detect data model for correct root path
+var tr181Test = declare("Device.DeviceInfo.Manufacturer", {value: now});
+var mgmtRoot = tr181Test.size > 0
+  ? "Device.ManagementServer"
+  : "InternetGatewayDevice.ManagementServer";
+declare(mgmtRoot + ".PeriodicInformEnable", {value: now}, {value: true});
+declare(mgmtRoot + ".PeriodicInformInterval", {value: now}, {value: 300});

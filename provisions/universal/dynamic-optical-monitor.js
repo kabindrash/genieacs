@@ -43,23 +43,28 @@ var rxPower = null;
 
 if (mfgLower.indexOf("zte") >= 0) {
   // ZTE: GPON interface config (TR-098 only)
-  rxPower = declare(
-    "InternetGatewayDevice.WANDevice.1.X_ZTE-COM_GponInterfaceConfig.RxPower",
-    {value: now}
-  );
+  var zteGponBase = "InternetGatewayDevice.WANDevice.1.X_ZTE-COM_GponInterfaceConfig";
+  rxPower = declare(zteGponBase + ".RxPower", {value: now});
+
+  // Also read TxPower and Temperature for telemetry logging
+  var txPower = declare(zteGponBase + ".TxPower", {value: now});
+  var temperature = declare(zteGponBase + ".Temperature", {value: now});
+  var txVal = (txPower.value && txPower.value[0]) ? txPower.value[0] : "N/A";
+  var tempVal = (temperature.value && temperature.value[0]) ? temperature.value[0] : "N/A";
+  log("Optical telemetry (ZTE): TxPower=" + txVal + " Temperature=" + tempVal, {});
 } else if (mfgLower.indexOf("alcl") >= 0 || mfgLower.indexOf("nokia") >= 0) {
-  // Nokia/ALCL: try both data model roots
+  // Nokia/ALCL: select path based on detected data model
   if (isTR181) {
     rxPower = declare("Device.X_ALU_COM.OntOpticalParam.RxPower", {value: now});
   } else {
     rxPower = declare("InternetGatewayDevice.X_ALU_COM.OntOpticalParam.RxPower", {value: now});
-    if (!rxPower.size) {
-      rxPower = declare("Device.X_ALU_COM.OntOpticalParam.RxPower", {value: now});
-    }
   }
 } else if (mfgLower.indexOf("huawei") >= 0) {
   // Huawei does not expose optical monitoring via TR-069
   log("dynamic-optical-monitor: Huawei optical not available via TR-069, skipping", {});
+} else if (mfg) {
+  // Unknown vendor — log for debugging
+  log("dynamic-optical-monitor: no optical path for vendor '" + mfg + "', skipping", {});
 }
 
 if (rxPower && rxPower.size && rxPower.value && rxPower.value[0]) {
