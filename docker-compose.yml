@@ -1,54 +1,59 @@
 services:
   mongodb:
-    image: mongo:6
+    image: mongo:${MONGO_VERSION:-6}
     volumes:
       - mongodb-data:/data/db
     ports:
-      - "27017:27017"
+      - "${MONGODB_PORT:-27017}:27017"
+    restart: unless-stopped
 
   genieacs-cwmp:
     build: .
     command: ["node", "bin/genieacs-cwmp"]
     depends_on: [mongodb]
     environment:
-      GENIEACS_MONGODB_CONNECTION_URL: mongodb://mongodb/genieacs
-      GENIEACS_CWMP_ACCESS_LOG_FILE: /dev/null
+      GENIEACS_MONGODB_CONNECTION_URL: ${GENIEACS_MONGODB_CONNECTION_URL:-mongodb://mongodb/genieacs}
+      GENIEACS_CWMP_ACCESS_LOG_FILE: ${GENIEACS_CWMP_ACCESS_LOG_FILE:-/dev/null}
       GENIEACS_EXT_DIR: /app/config/ext
     ports:
-      - "7547:7547"
+      - "${CWMP_PORT:-7547}:7547"
+    restart: unless-stopped
 
   genieacs-nbi:
     build: .
     command: ["node", "bin/genieacs-nbi"]
     depends_on: [mongodb]
     environment:
-      GENIEACS_MONGODB_CONNECTION_URL: mongodb://mongodb/genieacs
-      GENIEACS_NBI_ACCESS_LOG_FILE: /dev/null
+      GENIEACS_MONGODB_CONNECTION_URL: ${GENIEACS_MONGODB_CONNECTION_URL:-mongodb://mongodb/genieacs}
+      GENIEACS_NBI_ACCESS_LOG_FILE: ${GENIEACS_NBI_ACCESS_LOG_FILE:-/dev/null}
     ports:
-      - "7557:7557"
+      - "${NBI_PORT:-7557}:7557"
+    restart: unless-stopped
 
   genieacs-fs:
     build: .
     command: ["node", "bin/genieacs-fs"]
     depends_on: [mongodb]
     environment:
-      GENIEACS_MONGODB_CONNECTION_URL: mongodb://mongodb/genieacs
-      GENIEACS_FS_ACCESS_LOG_FILE: /dev/null
+      GENIEACS_MONGODB_CONNECTION_URL: ${GENIEACS_MONGODB_CONNECTION_URL:-mongodb://mongodb/genieacs}
+      GENIEACS_FS_ACCESS_LOG_FILE: ${GENIEACS_FS_ACCESS_LOG_FILE:-/dev/null}
     ports:
-      - "7567:7567"
+      - "${FS_PORT:-7567}:7567"
+    restart: unless-stopped
 
   genieacs-ui:
     build: .
     command: ["node", "bin/genieacs-ui"]
     depends_on: [mongodb]
     environment:
-      GENIEACS_MONGODB_CONNECTION_URL: mongodb://mongodb/genieacs
-      GENIEACS_UI_JWT_SECRET: changeme
+      GENIEACS_MONGODB_CONNECTION_URL: ${GENIEACS_MONGODB_CONNECTION_URL:-mongodb://mongodb/genieacs}
+      GENIEACS_UI_JWT_SECRET: ${GENIEACS_UI_JWT_SECRET:?Set GENIEACS_UI_JWT_SECRET in .env}
     ports:
-      - "3001:3000"
+      - "${UI_PORT:-3001}:3000"
+    restart: unless-stopped
 
   provision-deployer:
-    image: curlimages/curl:latest
+    image: curlimages/curl:8.12.1
     depends_on: [genieacs-nbi]
     volumes:
       - ./provisions:/provisions:ro
