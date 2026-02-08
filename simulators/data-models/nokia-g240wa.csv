@@ -44,6 +44,7 @@ InternetGatewayDevice.LANDevice.1.WLANConfiguration.1,true,false,,
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Enable,false,true,true,xsd:boolean
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID,false,true,Nokia-G240WA-2G,xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Channel,false,true,6,xsd:unsignedInt
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.PossibleChannels,false,false,"1,2,3,4,5,6,7,8,9,10,11,12,13",xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BSSID,false,false,00:1E:80:00:00:01,xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.BeaconType,false,true,11i,xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.Standard,false,false,n,xsd:string
@@ -56,6 +57,7 @@ InternetGatewayDevice.LANDevice.1.WLANConfiguration.5,true,false,,
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.Enable,false,true,true,xsd:boolean
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.SSID,false,true,Nokia-G240WA-5G,xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.Channel,false,true,36,xsd:unsignedInt
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.PossibleChannels,false,false,"36,40,44,48,52,56,60,64,100,104,108,112,116,120,124,128,132,136,140,144,149,153,157,161,165",xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.BSSID,false,false,00:1E:80:00:00:05,xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.BeaconType,false,true,11i,xsd:string
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.Standard,false,false,ac,xsd:string
@@ -64,6 +66,19 @@ InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.WPAAuthenticationMode,fals
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.PreSharedKey,true,false,,
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.PreSharedKey.1,true,false,,
 InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.PreSharedKey.1.KeyPassphrase,false,true,defaultpass5g,xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9,true,false,,
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.Enable,false,true,true,xsd:boolean
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.SSID,false,true,Nokia-G240WA-6E,xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.Channel,false,true,37,xsd:unsignedInt
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.PossibleChannels,false,false,"1;5;9;13;17;21;25;29;33;37;41;45;49;53;57;61;65;69;73;77;81;85;89;93;97;101;105;109;113;117;121;125;129;133;137;141;145;149;153;157;161;165;169;173;177;181;185;189;193;197;201;205;209;213;217;221;225;229;233",xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.Standard,false,false,ax,xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.BSSID,false,false,00:1E:80:DD:EE:03,xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.BeaconType,false,true,11i,xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.WPAEncryptionModes,false,true,AESEncryption,xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.WPAAuthenticationMode,false,true,SAEAuthentication,xsd:string
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.PreSharedKey,true,false,,
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.PreSharedKey.1,true,false,,
+InternetGatewayDevice.LANDevice.1.WLANConfiguration.9.PreSharedKey.1.KeyPassphrase,false,true,SecurePassword123,xsd:string
 InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig,true,false,,
 InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.1,true,false,,
 InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.1.Enable,false,true,true,xsd:boolean

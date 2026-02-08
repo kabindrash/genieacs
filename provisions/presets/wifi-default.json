@@ -1,0 +1,11 @@
+{
+  "weight": 10,
+  "channel": "wifi",
+  "events": {"2 PERIODIC": true},
+  "precondition": "",
+  "configurations": [{
+    "type": "provision",
+    "name": "dynamic-wifi-config",
+    "args": ["{\"password\":\"SecurePassword123\",\"bands\":{\"2.4\":{\"ssid\":\"MyNetwork\",\"security\":\"wpa2\"},\"5\":{\"ssid\":\"MyNetwork-5G\",\"security\":\"wpa2\"},\"6\":{\"ssid\":\"MyNetwork-6E\",\"security\":\"wpa3\"}}}"]
+  }]
+}

@@ -238,13 +238,13 @@ export async function seed(options: Record<string, boolean>): Promise<void> {
       { _id: "ui.device.2.parameters.9.label", value: "'WLAN SSID'" },
       {
         _id: "ui.device.2.parameters.9.parameter",
-        value: "InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID",
+        value: "InternetGatewayDevice.LANDevice.1.WLANConfiguration.*.SSID",
       },
       { _id: "ui.device.2.parameters.10.label", value: "'WLAN passphrase'" },
       {
         _id: "ui.device.2.parameters.10.parameter",
         value:
-          "InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.KeyPassphrase",
+          "InternetGatewayDevice.LANDevice.1.WLANConfiguration.*.KeyPassphrase",
       },
       { _id: "ui.device.3.type", value: "'parameter-table'" },
       { _id: "ui.device.3.label", value: "'LAN hosts'" },
@@ -299,7 +299,7 @@ export async function seed(options: Record<string, boolean>): Promise<void> {
       { _id: "ui.index.4.label", value: "'SSID'" },
       {
         _id: "ui.index.4.parameter",
-        value: "InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID",
+        value: "InternetGatewayDevice.LANDevice.1.WLANConfiguration.*.SSID",
       },
       { _id: "ui.index.5.type", value: "'container'" },
       { _id: "ui.index.5.label", value: "'Last inform'" },

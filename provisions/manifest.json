@@ -4,6 +4,10 @@
   "virtual_parameters": [
     {"name": "wifi_ssid_2g", "file": "virtual-parameters/wifi_ssid_2g.js"},
     {"name": "wifi_password_2g", "file": "virtual-parameters/wifi_password_2g.js"},
+    {"name": "wifi_ssid_5g", "file": "virtual-parameters/wifi_ssid_5g.js"},
+    {"name": "wifi_password_5g", "file": "virtual-parameters/wifi_password_5g.js"},
+    {"name": "wifi_ssid_6g", "file": "virtual-parameters/wifi_ssid_6g.js"},
+    {"name": "wifi_password_6g", "file": "virtual-parameters/wifi_password_6g.js"},
     {"name": "wan_status", "file": "virtual-parameters/wan_status.js"},
     {"name": "wan_ip", "file": "virtual-parameters/wan_ip.js"},
     {"name": "optical_rx_power", "file": "virtual-parameters/optical_rx_power.js"}
@@ -11,13 +15,14 @@
   "provisions": {
     "universal": [
       {"name": "universal-auto-tag", "file": "universal/universal-auto-tag.js"},
+      {"name": "dynamic-wifi-config", "file": "universal/dynamic-wifi-config.js"},
       {"name": "universal-wifi-config", "file": "universal/universal-wifi-config.js"},
       {"name": "universal-optical-monitor", "file": "universal/universal-optical-monitor.js"},
       {"name": "universal-firmware-log", "file": "universal/universal-firmware-log.js"}
     ],
     "huawei": [
       {"name": "huawei-auto-tag", "file": "huawei/huawei-auto-tag.js"},
-      {"name": "huawei-wifi-config", "file": "huawei/huawei-wifi-config.js"},
+      {"name": "huawei-wifi-config", "file": "huawei/huawei-wifi-config.js", "deprecated": "Replaced by dynamic-wifi-config"},
       {"name": "huawei-wan-pppoe", "file": "huawei/huawei-wan-pppoe.js"},
       {"name": "huawei-wan-dhcp", "file": "huawei/huawei-wan-dhcp.js"},
       {"name": "huawei-firmware-upgrade", "file": "huawei/huawei-firmware-upgrade.js"},
@@ -26,7 +31,7 @@
     ],
     "zte": [
       {"name": "zte-auto-tag", "file": "zte/zte-auto-tag.js"},
-      {"name": "zte-wifi-config", "file": "zte/zte-wifi-config.js"},
+      {"name": "zte-wifi-config", "file": "zte/zte-wifi-config.js", "deprecated": "Replaced by dynamic-wifi-config"},
       {"name": "zte-wan-pppoe", "file": "zte/zte-wan-pppoe.js"},
       {"name": "zte-wan-dhcp", "file": "zte/zte-wan-dhcp.js"},
       {"name": "zte-optical-monitor", "file": "zte/zte-optical-monitor.js"},
@@ -36,7 +41,7 @@
     "nokia": [
       {"name": "nokia-detect-model", "file": "nokia/nokia-detect-model.js"},
       {"name": "nokia-auto-tag", "file": "nokia/nokia-auto-tag.js"},
-      {"name": "nokia-wifi-config", "file": "nokia/nokia-wifi-config.js"},
+      {"name": "nokia-wifi-config", "file": "nokia/nokia-wifi-config.js", "deprecated": "Replaced by dynamic-wifi-config"},
       {"name": "nokia-wan-pppoe", "file": "nokia/nokia-wan-pppoe.js"},
       {"name": "nokia-optical-monitor", "file": "nokia/nokia-optical-monitor.js"},
       {"name": "nokia-voip", "file": "nokia/nokia-voip.js"},
@@ -47,16 +52,13 @@
   "presets": [
     {"name": "universal-bootstrap", "file": "presets/universal-bootstrap.json"},
     {"name": "universal-firmware-log", "file": "presets/universal-firmware-log.json"},
-    {"name": "huawei-wifi", "file": "presets/huawei-wifi.json"},
+    {"name": "wifi-default", "file": "presets/wifi-default.json"},
     {"name": "huawei-wan", "file": "presets/huawei-wan.json"},
     {"name": "huawei-voip", "file": "presets/huawei-voip.json"},
-    {"name": "zte-wifi", "file": "presets/zte-wifi.json"},
     {"name": "zte-wan", "file": "presets/zte-wan.json"},
     {"name": "zte-optical", "file": "presets/zte-optical.json"},
     {"name": "zte-voip", "file": "presets/zte-voip.json"},
     {"name": "nokia-bootstrap", "file": "presets/nokia-bootstrap.json"},
-    {"name": "nokia-wifi-098", "file": "presets/nokia-wifi-098.json"},
-    {"name": "nokia-wifi-181", "file": "presets/nokia-wifi-181.json"},
     {"name": "nokia-wan-098", "file": "presets/nokia-wan-098.json"},
     {"name": "nokia-wan-181", "file": "presets/nokia-wan-181.json"},
     {"name": "nokia-optical", "file": "presets/nokia-optical.json"},

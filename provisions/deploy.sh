@@ -110,12 +110,17 @@ deploy_file "virtual_parameters" "wifi_ssid_2g" "virtual-parameters/wifi_ssid_2g
 deploy_file "virtual_parameters" "wifi_password_2g" "virtual-parameters/wifi_password_2g.js"
 deploy_file "virtual_parameters" "wan_status" "virtual-parameters/wan_status.js"
 deploy_file "virtual_parameters" "wan_ip" "virtual-parameters/wan_ip.js"
+deploy_file "virtual_parameters" "wifi_ssid_5g" "virtual-parameters/wifi_ssid_5g.js"
+deploy_file "virtual_parameters" "wifi_password_5g" "virtual-parameters/wifi_password_5g.js"
+deploy_file "virtual_parameters" "wifi_ssid_6g" "virtual-parameters/wifi_ssid_6g.js"
+deploy_file "virtual_parameters" "wifi_password_6g" "virtual-parameters/wifi_password_6g.js"
 deploy_file "virtual_parameters" "optical_rx_power" "virtual-parameters/optical_rx_power.js"
 
 # --- Deploy Universal Provisions ---
 echo ""
 echo "--- Universal Provisions ---"
 deploy_file "provisions" "universal-auto-tag" "universal/universal-auto-tag.js"
+deploy_file "provisions" "dynamic-wifi-config" "universal/dynamic-wifi-config.js"
 deploy_file "provisions" "universal-wifi-config" "universal/universal-wifi-config.js"
 deploy_file "provisions" "universal-optical-monitor" "universal/universal-optical-monitor.js"
 deploy_file "provisions" "universal-firmware-log" "universal/universal-firmware-log.js"
@@ -125,7 +130,7 @@ if vendor_selected "huawei"; then
   echo ""
   echo "--- Huawei Provisions ---"
   deploy_file "provisions" "huawei-auto-tag" "huawei/huawei-auto-tag.js"
-  deploy_file "provisions" "huawei-wifi-config" "huawei/huawei-wifi-config.js"
+  # huawei-wifi-config: Replaced by dynamic-wifi-config (kept on disk for reference)
   deploy_file "provisions" "huawei-wan-pppoe" "huawei/huawei-wan-pppoe.js"
   deploy_file "provisions" "huawei-wan-dhcp" "huawei/huawei-wan-dhcp.js"
   deploy_file "provisions" "huawei-firmware-upgrade" "huawei/huawei-firmware-upgrade.js"
@@ -138,7 +143,7 @@ if vendor_selected "zte"; then
   echo ""
   echo "--- ZTE Provisions ---"
   deploy_file "provisions" "zte-auto-tag" "zte/zte-auto-tag.js"
-  deploy_file "provisions" "zte-wifi-config" "zte/zte-wifi-config.js"
+  # zte-wifi-config: Replaced by dynamic-wifi-config (kept on disk for reference)
   deploy_file "provisions" "zte-wan-pppoe" "zte/zte-wan-pppoe.js"
   deploy_file "provisions" "zte-wan-dhcp" "zte/zte-wan-dhcp.js"
   deploy_file "provisions" "zte-optical-monitor" "zte/zte-optical-monitor.js"
@@ -152,7 +157,7 @@ if vendor_selected "nokia"; then
   echo "--- Nokia Provisions ---"
   deploy_file "provisions" "nokia-detect-model" "nokia/nokia-detect-model.js"
   deploy_file "provisions" "nokia-auto-tag" "nokia/nokia-auto-tag.js"
-  deploy_file "provisions" "nokia-wifi-config" "nokia/nokia-wifi-config.js"
+  # nokia-wifi-config: Replaced by dynamic-wifi-config (kept on disk for reference)
   deploy_file "provisions" "nokia-wan-pppoe" "nokia/nokia-wan-pppoe.js"
   deploy_file "provisions" "nokia-optical-monitor" "nokia/nokia-optical-monitor.js"
   deploy_file "provisions" "nokia-voip" "nokia/nokia-voip.js"
@@ -166,14 +171,15 @@ echo "--- Presets ---"
 deploy_file "presets" "universal-bootstrap" "presets/universal-bootstrap.json"
 deploy_file "presets" "universal-firmware-log" "presets/universal-firmware-log.json"
 
+# Universal WiFi preset (replaces vendor-specific huawei-wifi, zte-wifi, nokia-wifi-098, nokia-wifi-181)
+deploy_file "presets" "wifi-default" "presets/wifi-default.json"
+
 if vendor_selected "huawei"; then
-  deploy_file "presets" "huawei-wifi" "presets/huawei-wifi.json"
   deploy_file "presets" "huawei-wan" "presets/huawei-wan.json"
   deploy_file "presets" "huawei-voip" "presets/huawei-voip.json"
 fi
 
 if vendor_selected "zte"; then
-  deploy_file "presets" "zte-wifi" "presets/zte-wifi.json"
   deploy_file "presets" "zte-wan" "presets/zte-wan.json"
   deploy_file "presets" "zte-optical" "presets/zte-optical.json"
   deploy_file "presets" "zte-voip" "presets/zte-voip.json"
@@ -181,8 +187,6 @@ fi
 
 if vendor_selected "nokia"; then
   deploy_file "presets" "nokia-bootstrap" "presets/nokia-bootstrap.json"
-  deploy_file "presets" "nokia-wifi-098" "presets/nokia-wifi-098.json"
-  deploy_file "presets" "nokia-wifi-181" "presets/nokia-wifi-181.json"
   deploy_file "presets" "nokia-wan-098" "presets/nokia-wan-098.json"
   deploy_file "presets" "nokia-wan-181" "presets/nokia-wan-181.json"
   deploy_file "presets" "nokia-optical" "presets/nokia-optical.json"

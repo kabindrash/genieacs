@@ -528,3 +528,47 @@ Provision Execution
      declare("Tags.customer_config", null, {value: JSON.stringify(config)});
    }
    ```
+
+---
+
+## Dynamic WiFi Provisioning (WiFi 6E Architecture)
+
+The WiFi provisioning layer was redesigned to eliminate hardcoding and support WiFi 6E (6 GHz / 802.11ax). See `claudedocs/specs/WIFI-PROVISIONING-SPEC.md` for the full specification.
+
+### Key Design Principles
+
+1. **Configuration over Code** — All WiFi settings (SSIDs, passwords, security) live in preset JSON args
+2. **Dynamic Discovery** — Bands detected at runtime from device data model (TR-181 or TR-098)
+3. **Single Universal Provision** — `dynamic-wifi-config.js` replaces 4 vendor-specific WiFi scripts
+4. **WPA3 Enforcement on 6 GHz** — WiFi Alliance mandate: always forced regardless of policy
+
+### Architecture
+
+```
+Preset JSON (policy) → dynamic-wifi-config.js → Device
+                        ├─ Detect data model (TR-181 vs TR-098)
+                        ├─ Discover available bands
+                        ├─ Match bands to policy
+                        └─ Apply SSID, password, security per band
+```
+
+### Changing WiFi Settings (No Code Changes Required)
+
+| Operation | What to do |
+|-----------|-----------|
+| Change SSIDs/passwords | Edit preset JSON, redeploy |
+| Change security mode | Edit `security` field in preset JSON |
+| Add per-plan WiFi tiers | Create new preset with tag precondition |
+| Add new vendor | Add 1 line to `VENDOR_ALIASES` in `universal-auto-tag.js` |
+| Support new band (WiFi 7) | Add band key to policy JSON |
+
+### Virtual Parameters
+
+| Name | Band | Discovery Method |
+|------|------|-----------------|
+| `wifi_ssid_2g` | 2.4 GHz | Hardcoded instance 1 (universal) |
+| `wifi_password_2g` | 2.4 GHz | Hardcoded instance 1 (universal) |
+| `wifi_ssid_5g` | 5 GHz | Dynamic band discovery |
+| `wifi_password_5g` | 5 GHz | Dynamic band discovery |
+| `wifi_ssid_6g` | 6 GHz | Dynamic band discovery (empty if unsupported) |
+| `wifi_password_6g` | 6 GHz | Dynamic band discovery (empty if unsupported) |

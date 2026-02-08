@@ -50,6 +50,23 @@ services:
       ]
     networks: [genieacs-net]
 
+  sim-nokia-6e:
+    build: ./simulators
+    volumes:
+      - ./simulators/data-models:/data-models:ro
+    command:
+      [
+        "-u",
+        "http://genieacs-cwmp:7547/",
+        "-m",
+        "/data-models/nokia-xs2426g.csv",
+        "-p",
+        "2",
+        "-s",
+        "4000",
+      ]
+    networks: [genieacs-net]
+
 networks:
   genieacs-net:
     external: true
