@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "description": "GenieACS provision scripts for multi-vendor ONT management",
+  "version": "2.0.0",
+  "description": "GenieACS provision scripts — universal policy-driven architecture",
   "virtual_parameters": [
     {"name": "wifi_ssid_2g", "file": "virtual-parameters/wifi_ssid_2g.js"},
     {"name": "wifi_password_2g", "file": "virtual-parameters/wifi_password_2g.js"},
@@ -15,53 +15,25 @@
   "provisions": {
     "universal": [
       {"name": "universal-auto-tag", "file": "universal/universal-auto-tag.js"},
+      {"name": "universal-firmware-log", "file": "universal/universal-firmware-log.js"},
       {"name": "dynamic-wifi-config", "file": "universal/dynamic-wifi-config.js"},
-      {"name": "universal-wifi-config", "file": "universal/universal-wifi-config.js"},
-      {"name": "universal-optical-monitor", "file": "universal/universal-optical-monitor.js"},
-      {"name": "universal-firmware-log", "file": "universal/universal-firmware-log.js"}
+      {"name": "dynamic-wan-config", "file": "universal/dynamic-wan-config.js"},
+      {"name": "dynamic-voip-config", "file": "universal/dynamic-voip-config.js"},
+      {"name": "dynamic-optical-monitor", "file": "universal/dynamic-optical-monitor.js"},
+      {"name": "dynamic-port-forward", "file": "universal/dynamic-port-forward.js"}
     ],
-    "huawei": [
-      {"name": "huawei-auto-tag", "file": "huawei/huawei-auto-tag.js"},
-      {"name": "huawei-wifi-config", "file": "huawei/huawei-wifi-config.js", "deprecated": "Replaced by dynamic-wifi-config"},
-      {"name": "huawei-wan-pppoe", "file": "huawei/huawei-wan-pppoe.js"},
-      {"name": "huawei-wan-dhcp", "file": "huawei/huawei-wan-dhcp.js"},
-      {"name": "huawei-firmware-upgrade", "file": "huawei/huawei-firmware-upgrade.js"},
-      {"name": "huawei-voip", "file": "huawei/huawei-voip.js"},
-      {"name": "huawei-port-forward", "file": "huawei/huawei-port-forward.js"}
-    ],
-    "zte": [
-      {"name": "zte-auto-tag", "file": "zte/zte-auto-tag.js"},
-      {"name": "zte-wifi-config", "file": "zte/zte-wifi-config.js", "deprecated": "Replaced by dynamic-wifi-config"},
-      {"name": "zte-wan-pppoe", "file": "zte/zte-wan-pppoe.js"},
-      {"name": "zte-wan-dhcp", "file": "zte/zte-wan-dhcp.js"},
-      {"name": "zte-optical-monitor", "file": "zte/zte-optical-monitor.js"},
-      {"name": "zte-voip", "file": "zte/zte-voip.js"},
-      {"name": "zte-port-forward", "file": "zte/zte-port-forward.js"}
-    ],
-    "nokia": [
-      {"name": "nokia-detect-model", "file": "nokia/nokia-detect-model.js"},
-      {"name": "nokia-auto-tag", "file": "nokia/nokia-auto-tag.js"},
-      {"name": "nokia-wifi-config", "file": "nokia/nokia-wifi-config.js", "deprecated": "Replaced by dynamic-wifi-config"},
-      {"name": "nokia-wan-pppoe", "file": "nokia/nokia-wan-pppoe.js"},
-      {"name": "nokia-optical-monitor", "file": "nokia/nokia-optical-monitor.js"},
-      {"name": "nokia-voip", "file": "nokia/nokia-voip.js"},
+    "vendor_specific": [
       {"name": "nokia-alu-migration", "file": "nokia/nokia-alu-migration.js"},
-      {"name": "nokia-firmware-check", "file": "nokia/nokia-firmware-check.js"}
+      {"name": "nokia-firmware-check", "file": "nokia/nokia-firmware-check.js"},
+      {"name": "huawei-firmware-upgrade", "file": "huawei/huawei-firmware-upgrade.js"}
     ]
   },
   "presets": [
     {"name": "universal-bootstrap", "file": "presets/universal-bootstrap.json"},
     {"name": "universal-firmware-log", "file": "presets/universal-firmware-log.json"},
     {"name": "wifi-default", "file": "presets/wifi-default.json"},
-    {"name": "huawei-wan", "file": "presets/huawei-wan.json"},
-    {"name": "huawei-voip", "file": "presets/huawei-voip.json"},
-    {"name": "zte-wan", "file": "presets/zte-wan.json"},
-    {"name": "zte-optical", "file": "presets/zte-optical.json"},
-    {"name": "zte-voip", "file": "presets/zte-voip.json"},
-    {"name": "nokia-bootstrap", "file": "presets/nokia-bootstrap.json"},
-    {"name": "nokia-wan-098", "file": "presets/nokia-wan-098.json"},
-    {"name": "nokia-wan-181", "file": "presets/nokia-wan-181.json"},
-    {"name": "nokia-optical", "file": "presets/nokia-optical.json"},
-    {"name": "nokia-voip", "file": "presets/nokia-voip.json"}
+    {"name": "wan-default", "file": "presets/wan-default.json"},
+    {"name": "voip-default", "file": "presets/voip-default.json"},
+    {"name": "optical-default", "file": "presets/optical-default.json"}
   ]
 }

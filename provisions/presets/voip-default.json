@@ -1,0 +1,11 @@
+{
+  "weight": 20,
+  "channel": "voip",
+  "events": {"2 PERIODIC": true},
+  "precondition": "",
+  "configurations": [{
+    "type": "provision",
+    "name": "dynamic-voip-config",
+    "args": ["{\"server\":\"sip.isp.com\",\"port\":5060,\"username\":\"0612345678\",\"password\":\"changeme\",\"registrarPort\":5060}"]
+  }]
+}

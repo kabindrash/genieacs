@@ -1,19 +1,22 @@
 // Provision: huawei-firmware-upgrade
 // Pre/post firmware upgrade checks for Huawei ONTs.
 // The actual firmware download is triggered via the NBI task API.
-const now = Date.now();
+var now = Date.now();
 
-let currentFW = declare(
+var currentFW = declare(
   "InternetGatewayDevice.DeviceInfo.SoftwareVersion",
   {value: now}
 );
-log("Current firmware: " + currentFW.value[0]);
+var fwVal = (currentFW.value && currentFW.value[0]) ? currentFW.value[0] : "unknown";
+log("Current firmware: " + fwVal, {});
 
-let model = declare("DeviceID.ProductClass", {value: now});
-log("Device model: " + model.value[0]);
+var model = declare("DeviceID.ProductClass", {value: now});
+var mdlVal = (model.value && model.value[0]) ? model.value[0] : "unknown";
+log("Device model: " + mdlVal, {});
 
-let hwVersion = declare(
+var hwVersion = declare(
   "InternetGatewayDevice.DeviceInfo.HardwareVersion",
   {value: now}
 );
-log("Hardware version: " + hwVersion.value[0]);
+var hwVal = (hwVersion.value && hwVersion.value[0]) ? hwVersion.value[0] : "unknown";
+log("Hardware version: " + hwVal, {});

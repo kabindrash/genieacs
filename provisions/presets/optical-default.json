@@ -1,0 +1,11 @@
+{
+  "weight": 0,
+  "channel": "monitoring",
+  "events": {"2 PERIODIC": true},
+  "precondition": "",
+  "configurations": [{
+    "type": "provision",
+    "name": "dynamic-optical-monitor",
+    "args": ["{\"thresholds\":{\"warning\":-25,\"critical\":-28}}"]
+  }]
+}

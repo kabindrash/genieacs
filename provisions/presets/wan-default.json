@@ -1,0 +1,11 @@
+{
+  "weight": 10,
+  "channel": "wan",
+  "events": {"2 PERIODIC": true},
+  "precondition": "",
+  "configurations": [{
+    "type": "provision",
+    "name": "dynamic-wan-config",
+    "args": ["{\"type\":\"pppoe\",\"username\":\"user@isp.com\",\"password\":\"changeme\",\"vlan\":100}"]
+  }]
+}
